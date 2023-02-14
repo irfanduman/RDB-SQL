@@ -63,31 +63,31 @@ CREATE TABLE [Person].[Person_Mail](
 SELECT * FROM Person.Person
 
 INSERT INTO Person.Person ([SSN],[Person_FirstName],[Person_LastName])
-	VALUES (78945612344, 'Zehra', 'Tekin')
+	VALUES (78945612344, N'Zehra', N'Tekin')
 
 INSERT INTO Person.Person ([Person_FirstName],[SSN],[Person_LastName])
-	VALUES ('Eylem', 12345678977, 'Doðan')
+	VALUES (N'Eylem', 12345678977, N'Doðan')
 
 INSERT INTO Person.Person ([SSN],[Person_FirstName])
-	VALUES (25896374199, 'Zehra')
+	VALUES (25896374199, N'Zehra')
 
 --it is not mandatory to use column names & INTO is optional
 
-INSERT Person.Person VALUES (55008479341, 'Kerim', 'Öztürk')
+INSERT Person.Person VALUES (55008479341, N'Kerim', N'Öztürk')
 
-INSERT Person.Person VALUES (95028479341, 'Ali', NULL)
+INSERT Person.Person VALUES (95028479341, N'Ali', NULL)
 
 --primary key constraint
 INSERT INTO Person.Person ([SSN],[Person_FirstName],[Person_LastName]) --ERROR
-	VALUES (78945612344, 'Zehra', 'Tekin')
+	VALUES (78945612344, N'Zehra', N'Tekin')
 
 --Check constraint
 INSERT INTO Person.Person ([SSN],[Person_FirstName],[Person_LastName]) --ERROR
-	VALUES (789456123448, 'Zehra', 'Tekin')
+	VALUES (789456123448, N'Zehra', N'Tekin')
 
 --data type constraint
 INSERT INTO Person.Person ([SSN],[Person_FirstName],[Person_LastName]) --ERROR
-	VALUES ('Zehra', 'Zehra', 'Tekin')
+	VALUES (N'Zehra', N'Zehra', N'Tekin')
 
 ----------------------------------------------
 
@@ -95,19 +95,19 @@ SELECT * FROM Person.Person_Mail
 SELECT * FROM Person.Person
 
 INSERT INTO Person.Person_Mail (Mail, SSN) 
-	VALUES ('eylemdog@gmail.com', 12345678977),
-		   ('zehrtek@hotmail.com', 78945612344),
-		   ('kemözt@gmail.com', 55008479341)
+	VALUES (N'eylemdog@gmail.com', 12345678977),
+		   (N'zehrtek@hotmail.com', 78945612344),
+		   (N'kemözt@gmail.com', 55008479341)
 
 --foreign key constraint
 SELECT * FROM Person.Person
 
 INSERT INTO Person.Person_Mail (Mail, SSN) 
-VALUES ('ahm@gmail.com', 11111111111)  --ERROR
+VALUES (N'ahm@gmail.com', 11111111111)  --ERROR
 
 --IDENTITY constraint
 INSERT INTO Person.Person_Mail (Mail_ID, Mail, SSN) 
-VALUES (10, 'takutlu@gmail.com', 46056688505) --ERROR
+VALUES (10, N'takutlu@gmail.com', 46056688505) --ERROR
 
 
 ----------------------------------------------
@@ -120,7 +120,7 @@ SELECT * FROM Names
 
 --from different database
 INSERT Names
-SELECT first_name FROM [SampleRetail].sale.customer WHERE first_name LIKE 'M%';
+SELECT first_name FROM [SampleRetail].sale.customer WHERE first_name LIKE N'M%';
 
 
 -- SELECT INTO
@@ -161,10 +161,10 @@ SELECT * FROM Book.Publisher
 SELECT * FROM Person.Person_2
 
 UPDATE Person.Person_2
-SET Person_FirstName='Tahsin'
+SET Person_FirstName=N'Tahsin'
 
 UPDATE Person.Person_2
-SET Person_FirstName='Ali' WHERE SSN=95028479341
+SET Person_FirstName=N'Ali' WHERE SSN=95028479341
 
 --update with JOIN
 
@@ -190,12 +190,12 @@ SELECT * FROM Person.Person_2
 SELECT * FROM Book.Publisher
 
 INSERT Book.Publisher 
-VALUES ('Ýþ Bankasý Kültür Yayýncýlýk'), ('Can Yayýncýlýk'), ('Ýletiþim Yayýncýlýk')
+VALUES (N'Ýþ Bankasý Kültür Yayýncýlýk'), (N'Can Yayýncýlýk'), (N'Ýletiþim Yayýncýlýk')
 
 DELETE FROM Book.Publisher
 
 INSERT Book.Publisher 
-VALUES ('Ýþ Bankasý Kültür Yayýncýlýk')
+VALUES (N'Ýþ Bankasý Kültür Yayýncýlýk')
 
 SELECT * FROM Book.Publisher
 
